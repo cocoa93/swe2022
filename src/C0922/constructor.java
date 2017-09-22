@@ -50,7 +50,7 @@ public class constructor {
     }
 
     public String getFriend(int index){
-        return friends.get(index);
+        return friends.get(index)+ " is " + this.getName()+"'s friend";
     }
 
 }

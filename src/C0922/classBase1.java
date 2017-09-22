@@ -16,9 +16,11 @@ public class classBase1 {
         a= "abbc";
 
         NoConst no = new NoConst(); // 생성자가 없어도 만들 수 있음. 자바가 기본 생성자를 만들어주기 때문
-        System.out.print(no.a);
+        System.out.println(no.a);
 
-        System.out.print(no.getFirstName(c1));
+        System.out.println(no.getFirstName(c1));
+
+        System.out.println(StaticClass.getData("abcdefg"));
 
     }
 }

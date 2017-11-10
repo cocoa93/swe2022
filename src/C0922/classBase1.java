@@ -20,7 +20,7 @@ public class classBase1 {
 
         System.out.println(no.getFirstName(c1));
 
-        System.out.println(StaticClass.getData("abcdefg"));
+
 
     }
 }

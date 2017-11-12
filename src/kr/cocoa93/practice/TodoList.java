@@ -18,8 +18,8 @@ public class TodoList {
     public static void addTodoList(String name){
         todos.add(new TodoList(name));
     }
-    void addTask(String name, Date dueDate){
-        taskList.add(new TodoTask(name,dueDate));
+    void addTask(String name){
+        taskList.add(new TodoTask(name));
     }
     void deleteTask(int index){
         taskList.remove(index);
@@ -46,9 +46,8 @@ public class TodoList {
         Date dueDate;
         boolean isComplete=false;
 
-        TodoTask(String name, Date dueDate) {
+        TodoTask(String name) {
             this.toDoTaskName = name;
-            this.dueDate = dueDate;
         }
 
         public String toString() {

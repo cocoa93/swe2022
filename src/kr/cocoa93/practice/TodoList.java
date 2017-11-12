@@ -7,15 +7,15 @@ public class TodoList {
     static ArrayList<TodoList> todos = new ArrayList<TodoList>();
     ArrayList<TodoTask> taskList = new ArrayList<>();
     String todoListName;
-    boolean sortingDir=false;
-    boolean showIfComplete=false;
+    int sortingSt =1;
+    boolean hideIfDone =false;
     TodoTheme listTheme;
 
     public TodoList(String name) {
         this.todoListName = name;
     }
 
-    public static void addTodoList(String name){
+    static void addTodoList(String name){
         todos.add(new TodoList(name));
     }
     void addTask(String name){
@@ -24,13 +24,16 @@ public class TodoList {
     void deleteTask(int index){
         taskList.remove(index);
     }
-    void changeSortingDir(){
-        this.sortingDir=!this.sortingDir;
+    void changeListName(String name){
+        this.todoListName=name;
+    }
+    void changeSortingSt(int st){
+        this.sortingSt =st;
     }
     void changeTheme() {
     }
     void changeShowIfComplete(){
-        this.showIfComplete=!this.showIfComplete;
+        this.hideIfDone =!this.hideIfDone;
     }
     void TodoListPrint(){
         System.out.println(this.taskList);
@@ -44,7 +47,8 @@ public class TodoList {
 
         String toDoTaskName;
         Date dueDate;
-        boolean isComplete=false;
+        boolean todaysTask=false;
+        boolean isDone =false;
 
         TodoTask(String name) {
             this.toDoTaskName = name;

@@ -1,7 +1,5 @@
 package kr.cocoa93.practice;
 import java.util.ArrayList;
-import java.util.Collections;
-import java.util.Date;
 import java.time.*;
 
 public class App {
@@ -12,9 +10,16 @@ public class App {
 
     void addTodoList(String name){
         todos.add(new TodoList(name));
+        viewList();
     }
     void deleteTodoList(int index){
         todos.remove(index);
+    }
+    void viewList(){
+        for(int i=0;i<todos.size();i++){
+            TodoList tmp =todos.get(i);
+            System.out.println(tmp.todoListName+" "+tmp.todoCount+"\n");
+        }
     }
 
 
@@ -22,6 +27,7 @@ public class App {
         ArrayList<TodoTask> taskList = new ArrayList<>();
         String todoListName;
         int sortingSt =0;
+        int todoCount =0;
         boolean hideIfDone =false;
         TodoTheme listTheme= new TodoTheme();
 
@@ -30,9 +36,12 @@ public class App {
         }
         void addTask(String name){
             taskList.add(new TodoTask(name));
+            todoCount++;
+            viewTasks();
         }
         void deleteTask(int index){
             taskList.remove(index);
+            todoCount--;
         }
         void changeListName(String name){
             this.todoListName=name;
@@ -47,8 +56,21 @@ public class App {
         void changeHiding(){
             this.hideIfDone =!this.hideIfDone;
         }
-        void getList(){
-            System.out.println(this.taskList);
+        void viewTasks(){
+            for(int i=0;i<taskList.size();i++){
+
+                TodoTask tmp=taskList.get(i);
+
+                if (tmp.isDone) System.out.print("[o] ");
+                else System.out.print("[x] ");
+
+                System.out.print(tmp.toDoTaskName+" ");
+
+                if (tmp.dueDate!=null) System.out.print(tmp.dueDate.toString()+" ");
+
+                if(tmp.alarm!=null) System.out.print("알림\n");
+                else System.out.print("\n");
+            }
 
         }
 
@@ -72,6 +94,11 @@ public class App {
             }
             void setDueDate(LocalDate d){
                 dueDate=d;
+            }
+            void setIsDone() {
+                if (!isDone) this.isDone=false;
+                else this.isDone=true;
+                viewTasks();
             }
 
             public String toString() {

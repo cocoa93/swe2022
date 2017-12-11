@@ -1,8 +1,9 @@
 package kr.cocoa93.practice;
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.time.*;
 
-public class App {
+public class App implements Serializable{
     ArrayList<TodoList> todos = new ArrayList<TodoList>();
 
     public App() {
